@@ -33,9 +33,10 @@ function initPreloadList() {
             const gameFilesLowerCase = [];
             for (let path of jsonResponse.tree) {
               path = path.path;
-              if (path.startsWith(gameId + "/")) {
+              if (path && typeof path === 'string' && path.startsWith(gameId + "/")) {
                 path = path.replace(gameId + "/", "/");
-                let lang = path.substring(1, path.substring(1, path.length).indexOf("/") + 1);
+                const slashIndex = path.substring(1).indexOf("/");
+                let lang = slashIndex !== -1 ? path.substring(1, slashIndex + 1) : "";
                 let fileName = path.replace("/" + lang, "").replace(".lmu", ".po");
                 gameFiles.push(fileName);
                 gameFilesLowerCase.push(fileName.toLowerCase());
@@ -193,15 +194,20 @@ function onRequestFile(_url) {
   const filePath = getFilePathForPreloads(decodeURIComponent(encodeURIComponent(_url)));
   gameLoadedFiles.add(filePath);
   // Game language detection
-  if (_url.indexOf("Language/") !== -1 && !filePath.endsWith("/meta.ini")) 
-    preloadsGameLang = filePath.substring(0, filePath.substring(1, filePath.length).indexOf("/") + 1);
+  if (_url.indexOf("Language/") !== -1 && filePath && typeof filePath === 'string' && !filePath.endsWith("/meta.ini")) {
+    const slashIndex = filePath.substring(1).indexOf("/");
+    preloadsGameLang = slashIndex !== -1 ? filePath.substring(0, slashIndex + 1) : "default";
+  }
   if (filePath.indexOf("Title/") !== -1) {
     gameLoadedFiles.clear();
     preloadsGameLang = 'default';
     for (let prevFile of prevLoadedFiles) {
       if (prevFile.indexOf("Language/") !== -1) {
         let folderFilePath = getFilePathForPreloads(decodeURIComponent(prevFile));
-        preloadsGameLang = folderFilePath.substring(0, folderFilePath.substring(1, folderFilePath.length).indexOf("/") + 1);
+        if (folderFilePath && typeof folderFilePath === 'string') {
+          const slashIndex = folderFilePath.substring(1).indexOf("/");
+          preloadsGameLang = slashIndex !== -1 ? folderFilePath.substring(0, slashIndex + 1) : "default";
+        }
         break
       }
     }

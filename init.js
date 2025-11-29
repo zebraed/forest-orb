@@ -1020,6 +1020,7 @@ function getCookie(cName) {
   const ca = document.cookie.split(';');
   for (let i = 0; i < ca.length; i++) {
     let c = ca[i];
+    if (!c || typeof c !== 'string') continue;
     while (c.charAt(0) === ' ')
       c = c.substring(1);
     if (c.indexOf(name) === 0)
