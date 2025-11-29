@@ -881,39 +881,52 @@ function tryEmbedScreenshot(node, uuid) {
 }
 
 (function () {
-  addSessionCommandHandler('say', args => {
-    const uuid = args[0];
-    const msg = args[1];
-    chatboxAddMessage(msg, MESSAGE_TYPE.MAP, uuid)
-  });
-
-  addSessionCommandHandler('gsay', args => {
-    const uuid = args[0];
-    const mapId = args[1];
-    const prevMapId = args[2];
-    const prevLocationsStr = args[3];
-    const x = parseInt(args[4]);
-    const y = parseInt(args[5]);
-    const msg = args[6];
-    const msgId = args[7]
-    chatboxAddMessage(msg, MESSAGE_TYPE.GLOBAL, uuid, false, mapId, prevMapId, prevLocationsStr, x, y, msgId);
-  });
-
-  addSessionCommandHandler('psay', args => {
-    const uuid = args[0];
-    const msg = args[1];
-    const msgId = args[2];
-    
-    let partyMember = joinedPartyCache ? joinedPartyCache.members.find(m => m.uuid === uuid) : null;
-    if (partyMember)
-      chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, false, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y, msgId);
-    else {
-      updateJoinedParty(() => {
-        partyMember = joinedPartyCache.members.find(m => m.uuid === uuid);
-        chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, false, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y, msgId);
-      });
+  function registerChatHandlers(attempt = 0) {
+    if (typeof addSessionCommandHandler === 'undefined') {
+      // wait for session.js to be loaded
+      if (attempt < 20) {
+        setTimeout(() => registerChatHandlers(attempt + 1), 50);
+        return;
+      }
+      return;
     }
-  });
+
+    addSessionCommandHandler('say', args => {
+      const uuid = args[0];
+      const msg = args[1];
+      chatboxAddMessage(msg, MESSAGE_TYPE.MAP, uuid)
+    });
+
+    addSessionCommandHandler('gsay', args => {
+      const uuid = args[0];
+      const mapId = args[1];
+      const prevMapId = args[2];
+      const prevLocationsStr = args[3];
+      const x = parseInt(args[4]);
+      const y = parseInt(args[5]);
+      const msg = args[6];
+      const msgId = args[7]
+      chatboxAddMessage(msg, MESSAGE_TYPE.GLOBAL, uuid, false, mapId, prevMapId, prevLocationsStr, x, y, msgId);
+    });
+
+    addSessionCommandHandler('psay', args => {
+      const uuid = args[0];
+      const msg = args[1];
+      const msgId = args[2];
+      
+      let partyMember = joinedPartyCache ? joinedPartyCache.members.find(m => m.uuid === uuid) : null;
+      if (partyMember)
+        chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, false, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y, msgId);
+      else {
+        updateJoinedParty(() => {
+          partyMember = joinedPartyCache.members.find(m => m.uuid === uuid);
+          chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, false, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y, msgId);
+        });
+      }
+    });
+  }
+
+  registerChatHandlers();
 })();
 
 (function() {
