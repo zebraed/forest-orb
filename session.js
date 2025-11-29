@@ -3,6 +3,7 @@ let sessionWs;
 const wsDelim = '\uffff';
 let sessionCommandHandlers = {};
 let sessionCommandCallbackQueue = {};
+let pendingCommands = [];
 
 let hasConnected;
 
@@ -35,6 +36,17 @@ function initSessionWs(attempt) {
         sendSessionCommand('pr', [ config.singleplayerMode ? 2 : 1 ]);
       if (config.hideLocation)
         sendSessionCommand('hl', [ 1 ]);
+
+      // send pending commands
+      while (pendingCommands.length) {
+        const cmd = pendingCommands.shift();
+        console.log('Command:', cmd.command);
+        console.log('Command params:', cmd.commandParams);
+        console.log('Callback func:', cmd.callbackFunc);
+        console.log('Callback command:', cmd.callbackCommand);
+        sendSessionCommand(cmd.command, cmd.commandParams, cmd.callbackFunc, cmd.callbackCommand);
+      }
+
       if (!hasConnected) {
         syncChatHistory()
           .catch(err => console.error(err))
@@ -65,6 +77,8 @@ function closeSessionWs() {
   sessionWs.onclose = null;
   sessionWs.close();
   sessionWs = null;
+  // clear pending commands on disconnect
+  pendingCommands = [];
 }
 
 function addSessionCommandHandler(command, handler) {
@@ -76,6 +90,12 @@ function sendSessionCommand(command, commandParams, callbackFunc, callbackComman
   if (!sessionWs)
     return;
 
+  // don't send if not connected - queue for later
+  if (sessionWs.readyState !== WebSocket.OPEN) {
+    pendingCommands.push({ command, commandParams, callbackFunc, callbackCommand });
+    return;
+  }
+
   let args = [ command ];
   if (commandParams?.length)
     args = args.concat(commandParams);
@@ -83,8 +103,11 @@ function sendSessionCommand(command, commandParams, callbackFunc, callbackComman
   if (callbackFunc) {
     if (!callbackCommand)
       callbackCommand = command;
-    if (sessionCommandCallbackQueue.hasOwnProperty(callbackCommand))
-      sessionCommandCallbackQueue[callbackCommand].push(callbackFunc);
+    if (sessionCommandCallbackQueue.hasOwnProperty(callbackCommand)) {
+      const queue = sessionCommandCallbackQueue[callbackCommand];
+      if (Array.isArray(queue))
+        queue.push(callbackFunc);
+    }
   }
 
   sessionWs.send(args.join(wsDelim));
