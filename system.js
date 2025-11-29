@@ -595,10 +595,11 @@ function initUiThemeFontStyles(uiTheme, themeGameId, fontStyle, setTheme, callba
 
   const defaultAltFontStyleIndex = 1;
   const defaultFallbackAltFontStyleIndex = 3;
-  
-  getFontColors(uiTheme, themeGameId, fontStyle, function (baseColors) {
-    const altFontStyle = fontStyle !== defaultAltFontStyleIndex ? defaultAltFontStyleIndex : defaultAltFontStyleIndex - 1;
-    const altColorCallback = function (altColors) {
+
+  getFontShadow(uiTheme, themeGameId, function () {
+    getFontColors(uiTheme, themeGameId, fontStyle, function (baseColors) {
+      const altFontStyle = fontStyle !== defaultAltFontStyleIndex ? defaultAltFontStyleIndex : defaultAltFontStyleIndex - 1;
+      const altColorCallback = function (altColors) {
       const rootStyle = document.documentElement.style;
 
       if (!rootStyle.getPropertyValue(baseColorProp)) {
@@ -633,14 +634,15 @@ function initUiThemeFontStyles(uiTheme, themeGameId, fontStyle, setTheme, callba
 
       if (callback)
         callback(baseColors, altColors);
-    };
-    getFontColors(uiTheme, themeGameId, altFontStyle, function (altColors) {
-      if (altColors[8][0] !== baseColors[8][0] || altColors[8][1] !== baseColors[8][1] || altColors[8][2] !== baseColors[8][2])
-        altColorCallback(altColors);
-      else {
-        const fallbackAltFontStyle = fontStyle !== defaultFallbackAltFontStyleIndex ? defaultFallbackAltFontStyleIndex : defaultFallbackAltFontStyleIndex - 1;
-        getFontColors(uiTheme, themeGameId, fallbackAltFontStyle, altColorCallback);
-      }
+      };
+      getFontColors(uiTheme, themeGameId, altFontStyle, function (altColors) {
+        if (altColors[8][0] !== baseColors[8][0] || altColors[8][1] !== baseColors[8][1] || altColors[8][2] !== baseColors[8][2])
+          altColorCallback(altColors);
+        else {
+          const fallbackAltFontStyle = fontStyle !== defaultFallbackAltFontStyleIndex ? defaultFallbackAltFontStyleIndex : defaultFallbackAltFontStyleIndex - 1;
+          getFontColors(uiTheme, themeGameId, fallbackAltFontStyle, altColorCallback);
+        }
+      });
     });
   });
 }
@@ -954,7 +956,7 @@ async function getFontColorsImgLoaded(img, themeGameId, uiTheme, fontStyle, call
     colors[i / 4] = [data[i], data[i + 1], data[i + 2]];
     
   if (typeof tinycolor !== 'undefined') {
-    const shadowRgb = uiThemeFontShadows[themeGameId][uiTheme] || [0, 0, 0];
+    const shadowRgb = (uiThemeFontShadows[themeGameId] && uiThemeFontShadows[themeGameId][uiTheme]) || [0, 0, 0];
     const shadowTc = getTinyColor(shadowRgb);
     const shadowLum = shadowTc.getLuminance();
     for (let rgbArray of colors) {
