@@ -188,7 +188,7 @@ function onUpdateConnectionStatus(status) {
 
   connStatus = status;
 
-  if (status === 1 || status === 3) {
+  if (status === 1 || status === 3 || status === 4) {
     addOrUpdatePlayerListEntry(null, playerData, false, true);
     updatePlayerFriends();
     updateJoinedParty();
@@ -230,6 +230,7 @@ function fetchAndUpdatePlayerInfo(forLogin) {
     .then(response => response.json())
     .then(jsonResponse => {
       if (jsonResponse.uuid) {
+        const wasLoggedIn = loggedIn;
         loggedIn = !isLogout && jsonResponse.registered;
         setCookie(loggedInKey, loggedIn ? 'true' : '');
         const fsBadgesButton = document.getElementById('fsBadgesButton');
@@ -273,7 +274,7 @@ function fetchAndUpdatePlayerInfo(forLogin) {
               trySetChatName('');
               updatePlayerFriends();
               updateParty();
-              if (isLogout) {
+              if (isLogout && wasLoggedIn) {
                 showAccountToastMessage('loggedOut', 'leave');
                 document.getElementById('content').classList.remove('loggedIn');
                 onResize();
@@ -932,8 +933,8 @@ document.getElementById('enterNameForm').onsubmit = function () {
       sendSessionCommand('hl', [config.singleplayerMode ? 1 : 0 ]);
     }
 
-    if (connStatus == 1 || connStatus == 3)
-      onUpdateConnectionStatus(config.privateMode ? 3 : 1);
+    if (connStatus == 1 || connStatus == 3 || connStatus == 4)
+      onUpdateConnectionStatus(config.privateMode ? (config.singleplayerMode ? 4 : 3) : 1);
 
     easyrpgPlayer.api.sessionReady();
   }
