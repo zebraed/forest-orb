@@ -40,10 +40,6 @@ function initSessionWs(attempt) {
       // send pending commands
       while (pendingCommands.length) {
         const cmd = pendingCommands.shift();
-        console.log('Command:', cmd.command);
-        console.log('Command params:', cmd.commandParams);
-        console.log('Callback func:', cmd.callbackFunc);
-        console.log('Callback command:', cmd.callbackCommand);
         sendSessionCommand(cmd.command, cmd.commandParams, cmd.callbackFunc, cmd.callbackCommand);
       }
 
