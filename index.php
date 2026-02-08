@@ -32,6 +32,9 @@
     case "if":
       $gameName = "If";
       break;
+    case "loveyou":
+      $gameName = "Love You";
+      break;
     case "mikan":
       $gameName = "Mikan Muzou";
       break;
@@ -263,7 +266,7 @@
             <?php if ($gameId != "yume"): ?>
               <div id="apad-shift" class="baseColorBg apadRectBtn apadBtn" data-key="ShiftLeft" data-key-code="16"></div>
             <?php endif ?>
-            <?php if ($gameId == "yume" || $gameId == "unconscious" || $gameId == "prayers" || $gameId == "someday" || $gameId == "unevendream" || $gameId == "braingirl" || $gameId == "tsushin" || $gameId == "oneshot" || $gameId == "unaccomplished" || $gameId == "fog" || $gameId == "cold"): ?>
+            <?php if ($gameId == "yume" || $gameId == "unconscious" || $gameId == "prayers" || $gameId == "someday" || $gameId == "unevendream" || $gameId == "braingirl" || $gameId == "tsushin" || $gameId == "oneshot" || $gameId == "unaccomplished" || $gameId == "fog" || $gameId == "cold" || $gameId == "loveyou"): ?>
               <div id="apad-numbers" class="apadBtnContainer">
                 <?php if ($gameId == "tsushin"): ?>
                   <div id="apad-0" class="baseColorBg apadSqBtn apadBtn" data-key="Digit0" data-key-code="48"></div>
@@ -525,7 +528,7 @@
                   <label id="loginError"></label>
                 </li>
               </ul>
-              <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAAB2ijZ45647GuniE"></div>
               <button type="submit" data-i18n="[html]modal.login.submit">Submit</button>
             </form>
           </div>
@@ -557,7 +560,7 @@
                   <label id="registerError"></label>
                 </li>
               </ul>
-              <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAAB2ijZ45647GuniE"></div>
               <button type="submit" data-i18n="[html]modal.register.submit">Submit</button>
             </form>
           </div>
@@ -1509,6 +1512,7 @@
               <li><span data-i18n="[html]modal.warnings.warning1">Some games contain flashing lights sequences or patterns that may affect photosensitive viewers.</span></li>
               <li><span data-i18n="[html]modal.warnings.warning2">References to self-harm or suicide.</span></li>
               <li><span data-i18n="[html]modal.warnings.warning3">Disturbing imagery.</span></li>
+              <li><span data-i18n="[html]modal.warnings.warning4">Depictions of drug use.</span></li>
             </ul>
           </div>
         </div>
@@ -2203,7 +2207,7 @@
     <div>
       <div id="gameEndDate" class="notice" style="display: none;"></div>
       <?php $gameIdsWithDisclaimer = [ "flow", "someday", "deepdreams", "prayers", "amillusion", "unevendream", "braingirl",
-      "muma", "genie", "mikan", "ultraviolet", "sheawaits", "oversomnia", "tsushin", "nostalgic", "oneshot", "if", "unaccomplished", "fog", "cold" ]; ?>
+      "muma", "genie", "mikan", "ultraviolet", "sheawaits", "oversomnia", "tsushin", "nostalgic", "oneshot", "if", "unaccomplished", "fog", "cold", "loveyou" ]; ?>
       <?php if ($gameId == "2kki"): ?>
       <br>
       <div class="notice version">Yume 2kki Version <span id="2kkiVersion"></span></div>
