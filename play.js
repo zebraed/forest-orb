@@ -375,6 +375,7 @@ populateUiThemes();
 
 const gameLogoUrl = `../images/logo_${gameId}.png`;
 const gameLogoImg = new Image();
+gameLogoImg.setAttribute('crossOrigin', 'anonymous');
 gameLogoImg.onload = function () {
   let width = gameLogoImg.width;
   let height = gameLogoImg.height;
@@ -775,6 +776,7 @@ function closeModal() {
       activeModal.classList.remove('fadeOut');
       modalContainer.prepend(activeModal);
       updateFullscreenPolling();
+      activeModal.dispatchEvent(new CustomEvent('modalclose'));
     }, modalTransitionDuration);
   } else {
     updateFullscreenPolling();
@@ -1034,10 +1036,18 @@ document.getElementById('globalMessageButton').onclick = function () {
   this.classList.toggle('toggled');
   const chatInput = document.getElementById('chatInput');
   const toggled = this.classList.contains('toggled');
-  if (toggled)
-    chatInput.dataset.global = true;
-  else
-    delete chatInput.dataset.global;
+
+  // Only let globe change message destination if all chat is actually
+  // selected, otherwise this only updates the visuals of the button, 
+  // since this function is over-used by the config loader for that.
+  const active = document.getElementById("chatTabAll").classList.contains("active");
+  if (active) {
+    if (toggled)
+      chatInput.dataset.global = true;
+    else
+      delete chatInput.dataset.global;
+  }
+
   chatInput.disabled = toggled && document.getElementById('chatInputContainer').classList.contains('globalCooldown');
   config.globalMessage = toggled;
   updateConfig(config);
@@ -1728,9 +1738,6 @@ function onResize() {
       : document.getElementById('chatboxContainer');
     if (explorerContainer.parentElement !== explorerParent)
       explorerParent.appendChild(explorerContainer);
-    const explorerFrame = document.getElementById('explorerFrame');
-    const explorerUndiscoveredLocationsLink = document.getElementById('explorerUndiscoveredLocationsLink');
-    explorerUndiscoveredLocationsLink.style.left = `${explorerFrame.offsetLeft}px`;
   }
 
   updateCanvasFullscreenSize();
@@ -1984,7 +1991,7 @@ function setLang(lang, isInit) {
 
   globalConfig.lang = lang;
   initBlocker = initBlocker.then(() => withTimeout(800, 
-    fetchNewest(`../data/${gameId}/Language/${lang}/meta.ini`).then(response => { // Prevent a crash when the --language argument is used and the game doesn't have a Language folder
+    fetchNewest(`${cdnUrl}/${gameId}/Language/${lang}/meta.ini`).then(response => { // Prevent a crash when the --language argument is used and the game doesn't have a Language folder
       if (response.ok && response.status < 400 && isInit && gameIds.indexOf(gameId) > -1) {
         easyrpgPlayer.language = (gameDefaultLangs.hasOwnProperty(gameId) ? gameDefaultLangs[gameId] !== lang : lang !== 'en') ? lang : 'default';
       }
@@ -2266,7 +2273,7 @@ function initLocalization(isInitial) {
         for (let langOpt of languages) {
           const lang = langOpt.value;
           if (gameDefaultLangs.hasOwnProperty(gameId) ? gameDefaultLangs[gameId] !== lang : lang !== 'en')
-            fetchNewest(`../data/${gameId}/Language/${lang}/meta.ini`).then(response => {
+            fetchNewest(`${cdnUrl}/${gameId}/Language/${lang}/meta.ini`).then(response => {
               if (!response.ok && response.status === 404 && gameId !== 'tsushin') { // Don't display that the game is not localized for Yume Tsushin since it uses a conlang
                 langOpt.innerText += '*';
                 langOpt.dataset.noGameLoc = true;
@@ -2767,7 +2774,7 @@ function getBadgeHintButton(locationName) {
 }
 
 document.getElementById('canvas').addEventListener('keydown', function(ev) {
-  if (ev.key === 'f') {
+  if (ev.key.toLowerCase() === 'f') {
     ev.preventDefault();
     if (document.getElementById('wikiModal').classList.contains('hidden'))
       gameMapHandle.deref()?.click?.();

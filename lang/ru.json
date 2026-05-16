@@ -425,7 +425,8 @@
       "save": {
         "title": "Управление данными сохранений",
         "reload": "Сохранить изменения и перезагрузить",
-        "info": "Если при сохранении вы играли на переведённой версии RPG_RT, в игре могут возникать ошибки до тех пор, пока вы снова не сохранитесь в EasyRPG без включённых переводов."
+        "info": "Если при сохранении вы играли на переведённой версии RPG_RT, в игре могут возникать ошибки до тех пор, пока вы снова не сохранитесь в EasyRPG без включённых переводов.",
+        "manageOther": "Manage Different Game&hellip;"
       },
       "uiTheme": {
         "title": "Стиль интерфейса",
@@ -572,7 +573,8 @@
         "rule3": "Никакой политики.",
         "rule4": "Никаких провокаций, оскорблений и унижений.",
         "rule5": "Запрещено читерство в любом виде под каким-бы то ни было предлогом.",
-        "rule6": "При возникновении проблем, пожалуйста, свяжитесь с модераторами."
+        "rule6": "Refrain from spamming or monopolizing chat for yourselves or your own groups, particularly in global.",
+        "closingRule": "При возникновении проблем, пожалуйста, свяжитесь с модераторами."
       },
       "warnings": {
         "title": "Warnings",
@@ -657,7 +659,6 @@
       "cold": "[COLD]",
       "unconscious": "Collective Unconscious",
       "flow": ".flow",
-      "prayers": "Answered Prayers",
       "deepdreams": "Deep Dreams",
       "someday": "Someday",
       "amillusion": "Amillusion",

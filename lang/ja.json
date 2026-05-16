@@ -425,7 +425,8 @@
       "save": {
         "title": "セーブデータ管理",
         "reload": "変更を保存してリロード",
-        "info": "セーブをアップロードする際、RPG_RT.exeから起動した翻訳版のゲームからセーブした場合、EasyRPGを使用して翻訳未使用のゲームでセーブし直さないと、エラーが表示されます"
+        "info": "セーブをアップロードする際、RPG_RT.exeから起動した翻訳版のゲームからセーブした場合、EasyRPGを使用して翻訳未使用のゲームでセーブし直さないと、エラーが表示されます",
+        "manageOther": "Manage Different Game&hellip;"
       },
       "uiTheme": {
         "title": "メニュー タイプ",
@@ -572,7 +573,8 @@
         "rule3": "政治的な会話は禁止です。",
         "rule4": "扇動的な発言(中傷を含む)は禁止です。",
         "rule5": "いかなる理由であれ、不正行為は禁止です。",
-        "rule6": "トラブルが発生した場合は、モデレーターにお知らせください。"
+        "rule6": "特にグローバルチャットでは、スパム行為や、自分たちや自分のグループのためにチャットを独占するような行為は控えてください。",
+        "closingRule": "トラブルが発生した場合は、モデレーターにお知らせください。"
       },
       "warnings": {
         "title": "注意事項",
@@ -657,7 +659,6 @@
       "cold": "[COLD]",
       "unconscious": "Collective Unconscious",
       "flow": ".flow",
-      "prayers": "Answered Prayers",
       "deepdreams": "Deep Dreams",
       "someday": "Someday",
       "amillusion": "Amillusion",

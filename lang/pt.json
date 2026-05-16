@@ -425,7 +425,8 @@
       "save": {
         "title": "Gerenciar Dados Salvos",
         "reload": "Salvar Alterações e Recarregar",
-        "info": "Para saves importantes, se a ultima vez que salvou foi enquanto usava uma tradução no RPG_RT, o jogo ira demostrar erros até que você salve novamente no EasyRPG sem nenhuma tradução ativa."
+        "info": "Para saves importantes, se a ultima vez que salvou foi enquanto usava uma tradução no RPG_RT, o jogo ira demostrar erros até que você salve novamente no EasyRPG sem nenhuma tradução ativa.",
+        "manageOther": "Manage Different Game&hellip;"
       },
       "uiTheme": {
         "title": "Tema da Interface",
@@ -572,7 +573,8 @@
         "rule3": "Sem política.",
         "rule4": "Sem comentários provocantes (incluindo insultos).",
         "rule5": "Sem trapaças de qualquer tipo por qualquer motivo.",
-        "rule6": "Se houver problemas, favor informar os moderadores."
+        "rule6": "Refrain from spamming or monopolizing chat for yourselves or your own groups, particularly in global.",
+        "closingRule": "Se houver problemas, favor informar os moderadores."
       },
       "warnings": {
         "title": "Warnings",
@@ -657,7 +659,6 @@
       "cold": "[COLD]",
       "unconscious": "Collective Unconscious",
       "flow": ".flow",
-      "prayers": "Answered Prayers",
       "deepdreams": "Deep Dreams",
       "someday": "Someday",
       "amillusion": "Amillusion",

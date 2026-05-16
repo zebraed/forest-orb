@@ -425,7 +425,8 @@
       "save": {
         "title": "세이브 데이터 관리",
         "reload": "변경 사항을 저장 후 새로고침",
-        "info": "만약 번역을 적용한 세이브 파일을 불러오셨다면, EasyRPG에서 번역을 적용하지 않은 상태에서 한 번 더 저장한 후 파일을 불러와 주십시오. 그렇지 않으면 오류가 표시됩니다."
+        "info": "만약 번역을 적용한 세이브 파일을 불러오셨다면, EasyRPG에서 번역을 적용하지 않은 상태에서 한 번 더 저장한 후 파일을 불러와 주십시오. 그렇지 않으면 오류가 표시됩니다.",
+        "manageOther": "Manage Different Game&hellip;"
       },
       "uiTheme": {
         "title": "UI 테마",
@@ -572,7 +573,8 @@
         "rule3": "정치적 발언은 금지입니다.",
         "rule4": "선동적인 언행은 금지입니다(비난 포함).",
         "rule5": "어느 경우더라도 치트는 사용하지 마십시오.",
-        "rule6": "문제가 있으면 운영진에게 알려 주십시오."
+        "rule6": "Refrain from spamming or monopolizing chat for yourselves or your own groups, particularly in global.",
+        "closingRule": "문제가 있으면 운영진에게 알려 주십시오."
       },
       "warnings": {
         "title": "경고",
@@ -656,7 +658,6 @@
       "cold": "[COLD]",
       "unconscious": "Collective Unconscious",
       "flow": ".flow(닷플로우)",
-      "prayers": "Answered Prayers(이루어진 기도들)",
       "deepdreams": "Deep Dreams(딥 드림즈)",
       "someday": "Someday",
       "amillusion": "Amillusion",

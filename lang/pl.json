@@ -425,7 +425,8 @@
       "save": {
         "title": "Zarządzaj zapisami",
         "reload": "Zapisz zmiany i zrestartuj",
-        "info": "Dla importowania zapisów, jeśli ostatnio grało się używając tłumaczenia na RPG_RT, gra będzie pokazywać błędy dopóki nie zapiszę się na EasyRPG bez tłumaczeń."
+        "info": "Dla importowania zapisów, jeśli ostatnio grało się używając tłumaczenia na RPG_RT, gra będzie pokazywać błędy dopóki nie zapiszę się na EasyRPG bez tłumaczeń.",
+        "manageOther": "Manage Different Game&hellip;"
       },
       "uiTheme": {
         "title": "Motyw",
@@ -572,7 +573,8 @@
         "rule3": "Zakaz polityki.",
         "rule4": "Zakaz używania obelg i zwracania niestosownych/wrogich uwag.",
         "rule5": "Zakaz używania cheatów z jakiegokolwiek powodu.",
-        "rule6": "Jeżeli wystąpi zamieszanie w czacie, poinformuj moderatorów."
+        "rule6": "Refrain from spamming or monopolizing chat for yourselves or your own groups, particularly in global.",
+        "closingRule": "Jeżeli wystąpi zamieszanie w czacie, poinformuj moderatorów."
       },
       "warnings": {
         "title": "Warnings",
@@ -657,7 +659,6 @@
       "cold": "[COLD]",
       "unconscious": "Collective Unconscious",
       "flow": ".flow",
-      "prayers": "Answered Prayers",
       "deepdreams": "Deep Dreams",
       "someday": "Someday",
       "amillusion": "Amillusion",
@@ -903,7 +904,7 @@
         "desktopHotkeys": "If you're playing on a PC, Alt+Enter can also toggle fullscreen mode, F7 by default takes a screenshot of the game, and the T key opens the in-game chat input.",
         "badgeControls": "In the Badge Gallery menu, you can drag and drop badges to rearrange them, or quickly remove many badges at once using the Remove Badges mode.",
         "cacheSettings": "Having trouble with location completion or outdated maps? The Cache menu allows you to clear the relevant cache and retrieve the latest data.",
-        "openSource": "Kod źródłowy YNOProject jest dostępny na stronie https://github.com/ynoproject/",
+        "openSource": "Kod źródłowy YNOproject jest dostępny na stronie https://github.com/ynoproject/",
         "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emojiName:."
       }
     },

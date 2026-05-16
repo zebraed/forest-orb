@@ -147,7 +147,7 @@ function initScreenshotControls() {
 }
 
 function viewScreenshot(url, date, screenshotData, lastModal) {
-  const isRemote = url.startsWith(serverUrl);
+  const isRemote = url.startsWith(ugcUrl);
   const isTemp = isRemote && url.includes('/temp/');
 
   const screenshot = document.createElement('img');
@@ -240,7 +240,7 @@ function viewScreenshot(url, date, screenshotData, lastModal) {
 }
 
 async function downloadScreenshot(url, date, screenshotData, resized) {
-  if (url.startsWith(serverUrl)) {
+  if (url.startsWith(ugcUrl)) {
     fetch(url).then(response => response.blob()).then(async blob => {
       const blobUrl = URL.createObjectURL(blob);
       await downloadScreenshot(blobUrl, date, screenshotData, resized);
@@ -262,6 +262,7 @@ async function downloadScreenshot(url, date, screenshotData, resized) {
     scaleContext.imageSmoothingEnabled = false;
 
     const img = new Image(320, 240);
+    img.setAttribute('crossOrigin', 'anonymous');
     img.onload = async () => {
       scaleContext.drawImage(img, 0, 0, width, height);
       scaleCanvas.toBlob(async blob => {
@@ -279,7 +280,7 @@ async function downloadScreenshot(url, date, screenshotData, resized) {
   const [month, day, year, hour, minute, second] = [date.getMonth(), date.getDate(), date.getFullYear(), date.getHours(), date.getMinutes(), date.getSeconds()];
   const formattedDate = `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${hour.toString().padStart(2, '0')}h${minute.toString().padStart(2, '0')}m${second.toString().padStart(2, '0')}s`;
   const game = screenshotData?.game || ynoGameId;
-  let mapName = gameLocalizedMapLocations[game][screenshotData?.mapId];
+  let mapName = (gameLocalizedMapLocations[game] ?? {})[screenshotData?.mapId];
   if (!mapName && game === '2kki' && screenshotData?.mapId)
     if (screenshotData.game) // if game is set (non-local screenshot) it's incorrect to use the cached 2kki values.
       mapName = await new Promise(resolve => getOrQuery2kkiLocations(screenshotData.mapId, null, null, resolve));
@@ -447,7 +448,7 @@ function initScreenshotsModal(isCommunity) {
 
       const screenshotThumbnail = document.createElement('img');
       screenshotThumbnail.classList.add('screenshotThumbnail', 'imageThumbnail', 'unselectable');
-      screenshotThumbnail.src = `${serverUrl}/screenshots/${uuid}/${screenshot.id}.png`;
+      screenshotThumbnail.src = `${ugcUrl}/screenshots/${uuid}/${screenshot.id}.png`;
       screenshotThumbnail.onclick = () => viewScreenshot(screenshotThumbnail.src, new Date(screenshot.timestamp), screenshot, screenshotsModal.id);
 
       screenshotThumbnailContainer.append(screenshotThumbnail);
