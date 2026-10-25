@@ -67,15 +67,15 @@
       "hostedWithPermission": "Размещено с разрешения разработчиков Yume 2kki."
     },
     "disclaimer": {
-      "pendingApproval": "Pending approval from developer/publisher",
-      "hostedWithPermission": "Hosted with permission from the developer(s)",
-      "originalCreation": "Original creation by the YNOproject community",
-      "gameEndDate": "Available to play on YNOproject until {{date}}"
+      "pendingApproval": "Ожидается разрешение от разработчика/издателя",
+      "hostedWithPermission": "Размещено с разрешения разработчика(ов)",
+      "originalCreation": "Создано сообществом YNOproject",
+      "gameEndDate": "Доступно для игры на YNOproject до {{date}}"
     },
     "modal": {
       "common": {
-        "save": "Save",
-        "apply": "Apply"
+        "save": "Сохранить",
+        "apply": "Применить"
       },
       "confirm": {
         "ok": "ОК",
@@ -143,10 +143,10 @@
           "musicVolume": "Громкость музыки",
           "togglePlayerSounds": "Звуки игроков",
           "toggleEnableBadgeHints": {
-            "label": "Badge Hints",
-            "helpText": "Badge hints become available once you have unlocked the 'Badge Collector Amulet EX' badge. When enabled, an icon will appear in the top right when you enter a location with at least one badge you haven't unlocked."
+            "label": "Подсказки о значках",
+            "helpText": "Подсказки о значках станут доступны после получения 'Амулета Собирателя значков EX'. Если эта опция включена, при входе в локацию с минимум одним не найденным значком в правом верхнем углу экрана появится символ."
           },
-          "togglePlayBadgeHintSound": "Play Badge Hint Sound",
+          "togglePlayBadgeHintSound": "Звук при появлении подсказок о значках",
           "toggleEnableExplorer": {
             "label": "Навигатор Yume 2kki",
             "helpText": "Навигатор Yume 2kki - Интеграция Yume 2kki Explorer, позволяющая вам просматривать соединения с вашей локацией. Эта функция может значительно повлиять на ваш исследовательский опыт игры, потому, советуем исследовать игру настолько, насколько возможно, не прибегая к ней. Вы должны войти в аккаунт на сайте, чтобы пользоваться Навигатором Yume 2kki."
@@ -173,12 +173,12 @@
           },
           "toggleQuestionablePreloads": "Предзагрузить обои ПК",
           "toggleSchedules": "События",
-          "unicodeFont": "Alternate Font",
+          "unicodeFont": "Альтернативный шрифт",
           "toggleSingleplayerMode": {
-            "label": "Singleplayer Mode",
-            "helpText": "Turns Private Mode into Singleplayer Mode, hiding all friends and party members from view. Perfect if you want to explore entirely by yourself."
+            "label": "Одиночный режим",
+            "helpText": "Превращает Приватный режим в Одиночный режим. Скрывает всех друзей и участников группы. Отлично подойдёт тем, кто хочет путешествовать в одиночку."
           },
-          "toggleHideUnnamedPlayers": "Hide Unnamed Players"
+          "toggleHideUnnamedPlayers": "Скрывать безымянных игроков"
         },
         "blocklist": "Заблокированные",
         "chatSettings": "Чат",
@@ -323,9 +323,9 @@
             }
           },
           "timeTrials": {
-            "label": "Time Trials",
+            "label": "Испытания на время",
             "fields": {
-              "goalReached": "Goal Reached"
+              "goalReached": "Цель достигнута"
             }
           },
           "screenshots": {
@@ -403,7 +403,8 @@
             "label": "Поиск:&nbsp;",
             "name": "Название:",
             "location": "Локация:",
-            "artist": "Artist:"
+            "artist": "Художник:",
+            "contents": "Text:"
           }
         }
       },
@@ -415,28 +416,28 @@
           "activate": "Убрать значки",
           "deactivate": "Готово"
         },
-        "manageBadgePreset": "Manage Presets"
+        "manageBadgePreset": "Настроить пресеты"
       },
       "badgePreset": {
-        "title": "Manage Badge Presets",
-        "selectPreset": "Select Preset",
-        "presetName": "Preset {{index}}",
-        "export": "Export",
-        "import": "Import",
+        "title": "Настройка пресетов значков",
+        "selectPreset": "Выберите пресет",
+        "presetName": "Пресет {{index}}",
+        "export": "Экспорт",
+        "import": "Импорт",
         "io": {
-          "exportSuccess": "Badge preset exported successfully.",
-          "importSuccess": "Badge preset imported successfully.",
-          "empty": "This preset is empty.",
-          "invalidFile": "Invalid preset file.",
-          "exportFailed": "Export failed.",
-          "importFailed": "Import failed."
+          "exportSuccess": "Пресет значка успешно экспортирован.",
+          "importSuccess": "Пресет значка успешно импортирован.",
+          "empty": "Этот пресет пустой.",
+          "invalidFile": "Неверный файл пресета.",
+          "exportFailed": "Ошибка экспорта.",
+          "importFailed": "Ошибка импорта."
         }
       },
       "save": {
         "title": "Управление данными сохранений",
         "reload": "Сохранить изменения и перезагрузить",
         "info": "Если при сохранении вы играли на переведённой версии RPG_RT, в игре могут возникать ошибки до тех пор, пока вы снова не сохранитесь в EasyRPG без включённых переводов.",
-        "manageOther": "Manage Different Game&hellip;"
+        "manageOther": "Настройка других игр&hellip;"
       },
       "uiTheme": {
         "title": "Стиль интерфейса",
@@ -574,7 +575,8 @@
             "placeholder": "Своя причина (до 50 символов)",
             "other": "Другое (укажите)"
           }
-        }
+        },
+        "subtitle": "Пожалуйста, подавайте жалобы ответственно. Повторные необоснованные жалобы будут караться."
       },
       "rules": {
         "title": "Правила",
@@ -583,16 +585,16 @@
         "rule3": "Никакой политики.",
         "rule4": "Никаких провокаций, оскорблений и унижений.",
         "rule5": "Запрещено читерство в любом виде под каким-бы то ни было предлогом.",
-        "rule6": "Refrain from spamming or monopolizing chat for yourselves or your own groups, particularly in global.",
+        "rule6": "Воздержитесь от спама или приватизации чата для себя или своей группы, особенно в общем чате.",
         "closingRule": "При возникновении проблем, пожалуйста, свяжитесь с модераторами."
       },
       "warnings": {
-        "title": "Warnings",
-        "subtitle": "Some games may contain the following content. Viewer discretion is advised.",
-        "warning1": "Flashing light sequences or patterns that may affect photosensitive viewers.",
-        "warning2": "References to self-harm or suicide.",
-        "warning3": "Disturbing imagery.",
-        "warning4": "Depictions of drug use."
+        "title": "Внимание",
+        "subtitle": "Некоторые игры содержат следующие материалы. Рекомендуется соблюдать осторожность при просмотре.",
+        "warning1": "Сцены с мерцающим светом и вспышками, не рекомендуемые зрителям повышенной светочувствительностью.",
+        "warning2": "Упоминания селфхарма или самоубийства.",
+        "warning3": "Шокирующие изображения.",
+        "warning4": "Сцены с употреблением наркотиков."
       },
       "explorerUndiscoveredLocations": {
         "title": "Неисследованная локация",
@@ -619,6 +621,14 @@
             }
           }
         }
+      },
+      "chatAgeWarning": {
+        "1": "Чат в игре предназначен для пользователей старше 16 лет.",
+        "2": "Входя в чат, вы подтверждаете, что ваш возраст составляет 16 лет и более.",
+        "3": "Нарушители этого правила будут подвергнуты модерации, включая перманентную блокировку сетевых функций игры.",
+        "title": "Перед входом в чат...",
+        "ok": "Подтвердить",
+        "cancel": "Отказаться от чата"
       }
     },
     "tooltips": {
@@ -645,7 +655,7 @@
         "disbandParty": "Распустить группу"
       },
       "events": "Походы",
-      "badges": "Badges",
+      "badges": "Значки",
       "locations": "Локации",
       "communityScreenshots": "Снимки сообщества",
       "rankings": "Рейтинги",
@@ -659,7 +669,7 @@
       "scheduleDescription": "Доступен Markdown, используйте {\\{l:World,имя ссылки (опционально)}} чтобы вставить ссылку на yume.wiki"
     },
     "reviewRules": "Просмотреть правила",
-    "reviewWarnings": "Review Warnings"
+    "reviewWarnings": "Предупреждения"
   },
   "messages": {
     "games": {
@@ -700,7 +710,7 @@
       "1": "В сети",
       "2": "Соединение...",
       "3": "Приватный режим",
-      "4": "Singleplayer"
+      "4": "Одиночный режим"
     },
     "lastOnline": {
       "template": "Был(а) в сети:\n{INTERVAL} назад",
@@ -833,14 +843,14 @@
           "fail": "Значка с таким ID не найдено."
         },
         "tempban": {
-          "label": "Tempban {PLAYER}",
-          "prompt": "When to unban {PLAYER}? (UTC time)",
-          "success": "{PLAYER} has been tempbanned."
+          "label": "Временно забанить {PLAYER}",
+          "prompt": "Когда разбанить {PLAYER}? (UTC time)",
+          "success": "Вы временно забанили {PLAYER}."
         },
         "tempmute": {
-          "label": "Tempmute {PLAYER}",
-          "prompt": "When to unmute {PLAYER}? (UTC time)",
-          "success": "{PLAYER} has been tempmuted."
+          "label": "Временно заглушить {PLAYER}",
+          "prompt": "Когда вернуть голос {PLAYER}? (UTC time)",
+          "success": "Голос {PLAYER} возвращён."
         }
       }
     },
@@ -918,7 +928,7 @@
         "badgeControls": "В меню Галлереи значков, вы можете перетаскивать значки, чтобы поменять их местами, либо удалить много значков разом в режиме Уборки значков.",
         "cacheSettings": "Проблемы со старыми локациями или устаревшими картами? Настройки позволяют очистить кэш карт и локаций, чтобы вы могли получить последние данные.",
         "openSource": "YNOproject - проект с открытым исходным кодом. С его репозиториями можно ознакомиться по ссылке: https://github.com/ynoproject/",
-        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emojiName:."
+        "useYnoEmoji": "Если ввести двоеточие (:) в поле чата, появится набор эмодзи YNO. Нажмите на эмодзи, чтобы добавить его в чат в формате :emojiName:."
       }
     },
     "save": {
@@ -1064,7 +1074,7 @@
       "loading": "Загрузка...",
       "bp": "{BP} ОЗ",
       "count": "{COUNT} значков",
-      "empty": "Badge gallery not set"
+      "empty": "Галерея значков не создана"
     },
     "badgePreset": {
       "empty": "This preset is empty."
@@ -1239,14 +1249,14 @@
           "playerPrompt": "Введите имя аккаунта, у которого необходимо забрать значок"
         },
         "tempban": {
-          "label": "Tempban a Player",
-          "playerPrompt": "Enter the name of the account to tempban",
-          "timePrompt": "Enter the datetime when the ban expires (UTC time)"
+          "label": "Временно забанить игрока",
+          "playerPrompt": "Введите имя аккаунта, который необходимо временно забанить",
+          "timePrompt": "Введите время, когда аккаунт будет разбанен (UTC time)"
         },
         "tempmute": {
-          "label": "Tempmute a Player",
-          "playerPrompt": "Enter the name of the account to tempmute",
-          "timePrompt": "Enter the datetime when the mute expires (UTC time)"
+          "label": "Временно заглушить игрока",
+          "playerPrompt": "Введите имя аккаунта, который необходимо временно заглушить",
+          "timePrompt": "Введите время, когда аккаунту будет возвращён голос (UTC time)"
         }
       }
     }

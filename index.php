@@ -1080,6 +1080,7 @@
                 <label for="badgeSortOrder" class="unselectable" data-i18n="[html]modal.badges.fields.sortOrder.label">Sort Order:&nbsp;</label>
                 <select id="badgeSortOrder">
                   <option value="" data-i18n="[html]modal.badges.fields.sortOrder.values.default">Default</option>
+                  <option value="_desc" data-i18n="[html]modal.badges.fields.sortOrder.values.reverse">Reversed</option>
                 </select>
               </div>
               <div class="uiControl">
@@ -1101,6 +1102,10 @@
                     <path
                       d="m10 4a1 1 90 000 5 1 1 90 000-5M5 17c0-5 1-7 5-7s5 2 5 7q-5 2-10 0" />
                   </svg>
+                  <svg data-kind="contents" class="icon searchIcon hidden" viewBox="0 0 10 10" fill="none"
+                    xmlns="http://www.w3.org/2000/svg" height="12">
+                    <path d="M7 6H16M2 10H16M2 14H16" />
+                  </svg>
                   <input id="badgeSearch" type="text" autocomplete="off">
                   <div class="dropdown hidden" id="badgeDropdown">
                     <div class="dropdownItem" tabindex="0">
@@ -1111,6 +1116,9 @@
                     </div>
                     <div class="dropdownItem" tabindex="0">
                       <i data-i18n="[html]modal.badges.fields.search.artist">Artist:</i> <span id="searchArtist"></span>
+                    </div>
+                    <div class="dropdownItem" tabindex="0">
+                      <i data-i18n="[html]modal.badges.fields.search.contents">Text:</i> <span id="searchContents"></span>
                     </div>
                   </div>
                 </div>
@@ -1755,6 +1763,7 @@
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
             <h1 class="modalTitle" data-i18n="[html]modal.report.title">Report</h1>
+            <h3 class="modalSubtitle" data-i18n="[html]modal.report.subtitle">Please create reports responsibly. Repeated frivolous reports will be penalized.</h3>
           </div>
           <div class="modalContent">
             <ul class="formControls" style="width:100%">
@@ -2201,6 +2210,30 @@
         <div class="modalOverlay"></div>
       </div>
       <div id="modalFadeOutContainer" class="modalContainer"></div>
+      <div class="modalContainer hidden">
+        <div id="chatAgeWarningModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.chatAgeWarning.title">Before you chat...</h1>
+          </div>
+          <div class="modalContent chatRulesInfo">
+            <p data-i18n="[html]modal.chatAgeWarning.1">
+              Game chat is reserved for players of ages 16 and older.
+            </p>
+            <p data-i18n="[html]modal.chatAgeWarning.2">
+              By participating in the chat, you confirm that you are 16 or older.
+            </p>
+            <p data-i18n="[html]modal.chatAgeWarning.3">
+              Players found to be in violation of this rule are subject to moderation actions, up to and including permanent bans from multiplayer interactions.
+            </p>
+          </div>
+          <div class="modalFooter">
+            <button class="jsConfirm unselectable" type="button" data-i18n="[html]modal.chatAgeWarning.ok">Confirm</button>
+            <button class="jsCancel unselectable" type="button" data-i18n="[html]modal.chatAgeWarning.cancel">Do not participate in chat</button>
+          </div>
+        </div>
+        <div class="modalOverlay"></div>
+      </div>
       <div id="confirmModalContainer" class="confirmModalContainer modalContainer hidden">
         <div id="confirmModal" class="confirmModal modal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
@@ -2210,8 +2243,8 @@
             </div>
           </div>
           <div class="modalFooter">
-            <button class="confirmOkButton unselectable" type="button" data-i18n="[html]modal.confirm.ok">Ok</button>
-            <button class="confirmCancelButton unselectable" type="button" data-i18n="[html]modal.confirm.cancel">Cancel</button>
+            <button class="jsConfirm confirmOkButton unselectable" type="button" data-i18n="[html]modal.confirm.ok">Ok</button>
+            <button class="jsCancel confirmCancelButton unselectable" type="button" data-i18n="[html]modal.confirm.cancel">Cancel</button>
           </div>
         </div>
         <div class="modalOverlay"></div>
